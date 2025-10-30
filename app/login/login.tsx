@@ -8,7 +8,7 @@ export default function LoginPage() {
   const [email, setEmail] = React.useState('');
   const [senha, setSenha] = React.useState('');
   const [erro, setErro] = React.useState('');
-  const [senhaVisivel, setsenhaVisivel] = React.useState(false); 
+  const [senhaVisivel, setSenhaVisivel] = React.useState(false); 
 
   const router = useRouter();
 
@@ -31,15 +31,32 @@ export default function LoginPage() {
       <div className="container">
 
         <div className="logInBox">
-
           <form className="inputGroup" onSubmit={handleLogin}>
             <input
               type="email"
+              id = "email"
               placeholder="Email" required
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               className="inputField"
             />
+
+            <div className = {styles.passwordWraper}>
+              <input
+              type = {senhaVisivel ? "text" : "senha"}
+              id = "senha"
+              placeholder = "senha" required
+              value = {senha}
+              onChange={(e) => setSenha(e.target.value)}
+              />
+
+              <button
+              type = "button"
+              onClick={() => setSenhaVisivel(!senhaVisivel)}
+              className={styles.toggleButton}
+              >{senhaVisivel ? '../Content/senhaEscondida.png': '../Content/senhaVisivel.png'}</button>
+            </div>
+
 
           </form>
 
