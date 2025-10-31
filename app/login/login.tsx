@@ -1,8 +1,11 @@
-`use client`;
+"use client";
 import React, { use, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { log } from 'console';
-import styles from './login.module.css'
+import { FaEye } from 'react-icons/fa';
+import {FaRegEyeSlash} from 'react-icons/fa';
+
+
 
 export default function LoginPage() {
   const [email, setEmail] = React.useState('');
@@ -41,11 +44,11 @@ export default function LoginPage() {
               className="inputField"
             />
 
-            <div className = {styles.passwordWraper}>
+            <div className = "passwordWraper">
               <input
-              type = {senhaVisivel ? "text" : "senha"}
+              type = {senhaVisivel ? "text" : "password"}
               id = "senha"
-              placeholder = "senha" required
+              placeholder = "Senha" required
               value = {senha}
               onChange={(e) => setSenha(e.target.value)}
               />
@@ -53,8 +56,9 @@ export default function LoginPage() {
               <button
               type = "button"
               onClick={() => setSenhaVisivel(!senhaVisivel)}
-              className={styles.toggleButton}
-              >{senhaVisivel ? '../Content/senhaEscondida.png': '../Content/senhaVisivel.png'}</button>
+              className="toggleButton">
+                {senhaVisivel ? <FaEye /> : <FaRegEyeSlash />}
+              </button>
             </div>
 
 
