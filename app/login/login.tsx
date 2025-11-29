@@ -4,17 +4,17 @@ import { useRouter } from 'next/navigation';
 import { log } from 'console';
 import { FaEye } from 'react-icons/fa';
 import {FaRegEyeSlash} from 'react-icons/fa';
-
-
+import Modals from '@/src/components/Modals';
 
 export default function LoginPage() {
   const [email, setEmail] = React.useState('');
   const [senha, setSenha] = React.useState('');
   const [erro, setErro] = React.useState('');
   const [senhaVisivel, setSenhaVisivel] = React.useState(false); 
-
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const router = useRouter();
 
+  
   //const { setLoggedInUser } = 
 
   const handleLogin = async (e: React.FormEvent) => {
@@ -38,7 +38,7 @@ export default function LoginPage() {
             <input
               type="email"
               id = "email"
-              placeholder="Email" required
+              placeholder="Email" 
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               className="inputField"
@@ -48,7 +48,7 @@ export default function LoginPage() {
               <input
               type = {senhaVisivel ? "text" : "password"}
               id = "senha"
-              placeholder = "Senha" required
+              placeholder = "Senha" 
               value = {senha}
               onChange={(e) => setSenha(e.target.value)}
               />
@@ -57,14 +57,18 @@ export default function LoginPage() {
               type = "button"
               onClick={() => setSenhaVisivel(!senhaVisivel)}
               className="toggleButton">
-                {senhaVisivel ? <FaEye /> : <FaRegEyeSlash />}
               </button>
+            </div>
+
+            <div>
+              <button onClick={() => setIsModalOpen(true)} className="submitButton">Modal</button>
             </div>
 
 
           </form>
 
         </div>
+        {isModalOpen && <Modals />}
       </div>
     )
 }

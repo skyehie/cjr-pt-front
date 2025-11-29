@@ -61,9 +61,8 @@ body {
     border-radius: 4px;
 }
 
-.passwordWraper {
-    position: relative;
-    display: flex;
+.passwordWraper input[type="password"] {
+    width: 100%;
 }
 
 .toggleButton {
