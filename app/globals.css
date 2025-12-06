@@ -104,3 +104,6 @@ body {
     background-color: #cccccc;
     cursor: not-allowed;
 }
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
